@@ -1,0 +1,44 @@
+<div class="principal">
+    <div class="form-signin w-100 m-auto">
+        <form [formGroup]="form" (ngSubmit)="login()">
+            <div class="text-center">
+               <i class="bi bi-person-circle mt-2" style="font-size: 46px;"></i>
+            </div>
+            
+            <h1 class="h3 mb-3 fw-normal text-center">Iniciar Sesión</h1>
+    
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="correo"  formControlName="correo" name="correo" >
+                <label for="floatingInput">Correo Electrónico</label>
+            </div>
+            <!--Validacion Correo-->
+            <div
+            *ngIf="form.controls['correo']?.invalid && (form.controls['correo']?.dirty || form.controls['correo']?.touched)">
+            <span class="text-danger" *ngIf="form.controls['correo'].errors?.['required']">
+              Campo obligatorio
+            </span>
+
+            <span class="text-danger" *ngIf="form.controls['correo'].errors?.['email']">
+              El formato del correo es inválido
+            </span>
+          </div>
+
+            <div class="form-floating mt-2">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="email" formControlName="contraseña" name="contraseña" >
+                <label for="floatingPassword">Contraseña</label>
+            </div>
+            <!--Validación Contraseña-->
+            <div
+            *ngIf="form.controls['contraseña']?.invalid && (form.controls['contraseña']?.dirty || form.controls['contraseña']?.touched)">
+            <span class="text-danger" *ngIf="form.controls['contraseña'].errors?.['required']">
+              Campo obligatorio
+            </span>
+          </div>
+            <a href="#" class="nav-link mt-2 text-primary" style="width: max-content;">¿Olvidó su contraseña?</a><br>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="this.form.invalid">Ingresar</button>
+        </form>
+        
+    </div>
+</div>
+
+
