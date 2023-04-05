@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"registro.component.css"}
+{"version":3,"sources":["registro.component.scss","registro.component.css"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,mBAAA;EACA,iBAAA;EACA,oBAAA;ACCJ;;ADEE;EACE,gBAAA;EACA,aAAA;EACA,4CAAA;ACCJ","file":"registro.component.css"}

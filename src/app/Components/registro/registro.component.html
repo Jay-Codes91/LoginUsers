@@ -1,1 +1,209 @@
-<p>registro works!</p>
+<div class="principal">
+  <div class="form-signup w-100 m-auto">
+    <form [formGroup]="form" (ngSubmit)="registro()">
+      <div class="text-center">
+        <i class="bi bi-person-circle mt-2" style="font-size: 46px;"></i>
+      </div>
+
+      <h1 class="h3 mb-3 fw-normal text-center">Registrarse</h1>
+
+      <!--Cedula-->
+      <div class="form-floating">
+        <input type="text" class="form-control" id="cedula" placeholder="cedula" formControlName="cedula"
+          name="cedula">
+        <label for="cedula">Cedula</label>
+      </div>
+
+      <div
+        *ngIf="form.controls['cedula']?.invalid && (form.controls['cedula']?.dirty || form.controls['cedula']?.touched)">
+        <span class="text-danger" *ngIf="form.controls['cedula'].errors?.['required']">
+          Campo obligatorio
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['cedula'].errors?.['maxlength']">
+          No puede exceder de 30 letras
+        </span>
+      </div>
+      <!--Nombre-->
+      <div class="form-floating mt-2">
+        <input type="text" class="form-control" id="nombre" placeholder="nombre" formControlName="nombre"
+          name="nombre">
+        <label for="nombre">Nombre</label>
+      </div>
+
+      <div
+        *ngIf="form.controls['nombre']?.invalid && (form.controls['nombre']?.dirty || form.controls['nombre']?.touched)">
+        <span class="text-danger" *ngIf="form.controls['nombre'].errors?.['required']">
+          Campo obligatorio
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['nombre'].errors?.['maxlength']">
+          No puede exceder de 20 caracteres
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['nombre'].errors?.['pattern']">
+          Solo puede ingresar letras
+        </span>
+      </div>
+      <!--Primer Apellido-->
+      <div class="form-floating mt-2">
+        <input type="text" class="form-control" id="apellido1" placeholder="apellido" formControlName="apellido1"
+          name="apellido1">
+        <label for="apellido1">Primer Apellido</label>
+      </div>
+
+      <div
+        *ngIf="form.controls['apellido1']?.invalid && (form.controls['apellido1']?.dirty || form.controls['apellido1']?.touched)">
+        <span class="text-danger" *ngIf="form.controls['apellido1'].errors?.['required']">
+          Campo obligatorio
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['apellido1'].errors?.['maxlength']">
+          No puede exceder de 20 letras
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['apellido1'].errors?.['pattern']">
+          Solo puede ingresar letras
+        </span>
+      </div>
+      <!--Segundo Apellido-->
+      <div class="form-floating mt-2">
+        <input type="text" class="form-control" id="apellido2" placeholder="apellido2" formControlName="apellido2"
+          name="apellido2">
+        <label for="apellido2">Segundo Apellido</label>
+      </div>
+
+      <div
+        *ngIf="form.controls['apellido2']?.invalid && (form.controls['apellido2']?.dirty || form.controls['apellido2']?.touched)">
+        <span class="text-danger" *ngIf="form.controls['apellido2'].errors?.['required']">
+          Campo obligatorio
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['apellido2'].errors?.['maxlength']">
+          No puede exceder de 20 letras
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['apellido2'].errors?.['pattern']">
+          Solo puede ingresar letras
+        </span>
+      </div>
+      <!--Fecha de Nacimiento-->
+      <div class="form-floating mt-2">
+        <input type="date" class="form-control w-50" id="fechaNacimiento" placeholder="fechaNacimiento"
+          formControlName="fechaNacimiento" name="fechaNacimiento">
+        <label for="fechaNacimiento">Fecha de Nacimiento</label>
+      </div>
+
+      <div
+        *ngIf="form.controls['fechaNacimiento']?.invalid && (form.controls['fechaNacimiento']?.dirty || form.controls['fechaNacimiento']?.touched)">
+        <span class="text-danger" *ngIf="form.controls['fechaNacimiento'].errors?.['required']">
+          Campo obligatorio
+        </span>
+      </div>
+      <!--Edad-->
+      <div class="form-floating mt-2">
+        <input type="text" class="form-control w-25" id="edad" placeholder="edad" formControlName="edad"
+          name="edad">
+        <label for="edad">Edad</label>
+      </div>
+
+      <div *ngIf="form.controls['edad']?.invalid && (form.controls['edad']?.dirty || form.controls['edad']?.touched)">
+        <span class="text-danger" *ngIf="form.controls['edad'].errors?.['required']">
+          Campo obligatorio
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['edad'].errors?.['maxlength']">
+          Nùmero incorrecto
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['edad'].errors?.['pattern']">
+          Solo puede ingresar numeros
+        </span>
+      </div>
+
+      <!--Correo-->
+      <div class="form-floating mt-2">
+        <input type="email" class="form-control" id="correo" placeholder="correo" formControlName="correo"
+          name="correo">
+        <label for="correo">Correo Electrónico</label>
+      </div>
+
+      <div
+        *ngIf="form.controls['correo']?.invalid && (form.controls['correo']?.dirty || form.controls['correo']?.touched)">
+        <span class="text-danger" *ngIf="form.controls['correo'].errors?.['required']">
+          Campo obligatorio
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['correo'].errors?.['maxlength']">
+          No puede exceder de 50 carecteres
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['correo'].errors?.['email']">
+          El formato del correo es inválido
+        </span>
+      </div>
+
+      <!--Dirección-->
+      <div class="mt-2">
+        <textarea class="form-control" id="direccion" placeholder="Direccion" formControlName="direccion"
+          name="direccion" rows="3"></textarea>
+      </div>
+
+      <div
+        *ngIf="form.controls['direccion']?.invalid && (form.controls['direccion']?.dirty || form.controls['direccion']?.touched)">
+        <span class="text-danger" *ngIf="form.controls['direccion'].errors?.['required']">
+          Campo obligatorio
+        </span>
+
+        <span class="text-danger" *ngIf="form.controls['direccion'].errors?.['maxlength']">
+          No puede exceder de 50 caracteres
+        </span>
+      </div>
+      
+      <!--Contraseña-->
+      <div class="form-floating mt-2">
+        <input type="password" class="form-control" id="contraseña" placeholder="contraseña"
+          formControlName="contraseña" name="contraseña">
+         <label for="contraseña">Contraseña</label>
+      </div>
+
+      
+      <div
+        *ngIf="form.controls['contraseña']?.invalid && (form.controls['contraseña']?.dirty || form.controls['contraseña']?.touched)">
+        <span class="text-danger" *ngIf="form.controls['contraseña'].errors?.['required']">
+          Campo obligatorio
+        </span>
+        <span class="text-danger" *ngIf="form.controls['contraseña'].errors?.['minlength']">
+          Ingrese 8 caracteres y/o numeros
+        </span>
+        <span class="text-danger" *ngIf="form.controls['contraseña'].errors?.['maxlength']">
+          No puede exceder los 20 caracteres y/o numeros
+        </span>
+      </div>
+
+      <div class="form-floating mt-2">
+        <input type="password" class="form-control" id="contraseña2" placeholder="contraseña2"
+          formControlName="contraseña2" name="contraseña2">
+        <label for="contraseña2">Confirmar Contraseña</label>
+      </div>
+
+      <div
+        *ngIf="form.controls['contraseña2']?.invalid && (form.controls['contraseña2']?.dirty || form.controls['contraseña2']?.touched)">
+        <span class="text-danger" *ngIf="form.controls['contraseña2'].errors?.['required']">
+          Campo obligatorio
+        </span>
+        <span class="text-danger" *ngIf="form.controls['contraseña2'].errors?.['minlength']">
+          Ingrese 8 caracteres y/o numeros
+        </span>
+        <span class="text-danger" *ngIf="form.controls['contraseña2'].errors?.['maxlength']">
+          No puede exceder los 20 caracteres y/o numeros
+        </span>
+      </div><br>
+      
+      <button class="w-100 btn btn-lg btn-primary mt-3" type="submit" [disabled]="this.form.invalid">Ingresar</button>
+    </form>
+
+  </div>
+</div><br>
+
+

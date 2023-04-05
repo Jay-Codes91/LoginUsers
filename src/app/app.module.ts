@@ -1,7 +1,21 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+
+//Primeng
+import {CaptchaModule} from 'primeng/captcha';
+
+//Services
+import { LoginService } from './Services/login.service';
+import { CorreoService } from './Services/correo.service';
+import { UrlService } from './Services/url.service';
+import {RegistroService} from './Services/registro.service';
+//Security
+import { JwtInterceptor } from './Security/jwt.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,12 +32,23 @@ import { UsuarioComponent } from './Components/usuario/usuario.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CaptchaModule
   ],
-  providers: [],
+  providers: 
+  [
+    LoginService,
+    CorreoService,
+    UrlService,
+    RegistroService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor,  multi: true}
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
